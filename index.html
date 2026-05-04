@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GigaPet</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <header>
+      <h1>&#x1F43E; GigaPet</h1>
+      <p class="subtitle">Your digital companion awaits</p>
+    </header>
+
+    <!-- Egg Selection Screen -->
+    <div id="egg-screen">
+      <h2>Choose Your Egg!</h2>
+      <div id="egg-container"></div>
+    </div>
+
+    <!-- Game Screen (hidden until egg is picked) -->
+    <div id="game-screen" style="display:none;">
+      <main>
+        <!-- Pet image section -->
+        <section class="pet-image-container">
+          <img class="pet-image" src="" alt="Your Pet">
+          <!-- shows pet's reaction after each button press -->
+          <div class="speech-bubble" id="speech-bubble" style="display:none;">
+            <span id="bubble-text"></span>
+          </div>
+        </section>
+
+        <!-- Stats dashboard -->
+        <section class="dashboard">
+          <div class="stat-row">
+            <span class="stat-label">Name</span>
+            <span class="stat-value name"></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Weight</span>
+            <span class="stat-value"><span class="weight"></span> lbs</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Happiness</span>
+            <span class="stat-value"><span class="happiness"></span> wags/min</span>
+          </div>
+          <!-- Energy stat for the "Rest" action button -->
+          <div class="stat-row">
+            <span class="stat-label">Energy</span>
+            <span class="stat-value"><span class="energy"></span> %</span>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="button-container">
+            <button class="treat-button">&#x1F36A; Treat</button>
+            <button class="play-button">&#x1F3BE; Play</button>
+            <button class="exercise-button">&#x1F3C3; Exercise</button>
+            <button class="rest-button">&#x1F4A4; Rest</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>Made with &#x2764;&#xFE0F; for GigaPet Project</p>
+    </footer>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="egg.js"></script>
+  </body>
+</html>
