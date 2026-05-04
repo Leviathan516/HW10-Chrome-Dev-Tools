@@ -21,19 +21,16 @@
       <div id="egg-container"></div>
     </div>
 
-    <!-- Game Screen (hidden until egg is picked) -->
+    <!-- Game Screen -->
     <div id="game-screen" style="display:none;">
       <main>
-        <!-- Pet image section -->
         <section class="pet-image-container">
           <img class="pet-image" src="" alt="Your Pet">
-          <!-- shows pet's reaction after each button press -->
           <div class="speech-bubble" id="speech-bubble" style="display:none;">
             <span id="bubble-text"></span>
           </div>
         </section>
 
-        <!-- Stats dashboard -->
         <section class="dashboard">
           <div class="stat-row">
             <span class="stat-label">Name</span>
@@ -47,13 +44,11 @@
             <span class="stat-label">Happiness</span>
             <span class="stat-value"><span class="happiness"></span> wags/min</span>
           </div>
-          <!-- Energy stat for the "Rest" action button -->
           <div class="stat-row">
             <span class="stat-label">Energy</span>
             <span class="stat-value"><span class="energy"></span> %</span>
           </div>
 
-          <!-- Action buttons -->
           <div class="button-container">
             <button class="treat-button">&#x1F36A; Treat</button>
             <button class="play-button">&#x1F3BE; Play</button>
@@ -68,11 +63,11 @@
       <p>Made with &#x2764;&#xFE0F; for GigaPet Project</p>
     </footer>
 
-    <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <script src="egg.js"></script>
+    <script src="devtools.js"></script>
   </body>
 </html>
