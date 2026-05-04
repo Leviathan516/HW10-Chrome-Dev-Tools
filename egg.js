@@ -7,37 +7,26 @@ var pets = [
   { name: "Pikachu",    file: "images/pikachu.gif"    }
 ];
 
+// console.table — display pets roster as a sortable table in DevTools
+console.table(pets);
+
 var eggStyles = ["🥚", "🥚", "🥚", "🥚", "🥚"];
 
 function buildEggScreen() {
-  // Shuffle the pets array
   var shuffled = pets.slice().sort(function() { return Math.random() - 0.5; });
 
   shuffled.forEach(function(pet, index) {
     var $egg = $('<div class="egg-choice"></div>');
     $egg.html('<div class="egg-icon">🥚</div><p>???</p>');
-
-    // Store which pet this egg hides using .data()
-    // .data(key, value) attaches arbitrary data to a DOM element without
-    // polluting the HTML — cleaner than data attributes for JS-only values.
-    // Docs: https://api.jquery.com/data/
     $egg.data('pet', pet);
-
-    $egg.click(function() {
-      hatchEgg($(this));
-    });
-
+    $egg.click(function() { hatchEgg($(this)); });
     $('#egg-container').append($egg);
   });
 }
 
-//  Hatch Animation 
 function hatchEgg($egg) {
-  // Disable all eggs while hatching bug fix 
   $('.egg-choice').css('pointer-events', 'none');
   $egg.addClass('selected-egg');
-
-  // Shake animation then reveal
   $egg.addClass('shaking');
 
   setTimeout(function() {
@@ -45,14 +34,18 @@ function hatchEgg($egg) {
     $egg.find('.egg-icon').text('💥');
 
     setTimeout(function() {
-      // Retrieve the hidden pet data stored with .data()
-      var chosenPet = $egg.data('pet');
-
-      // Update pet name and image
+      var chosenPet = $egg.data('pet');   // local var visible in Scope pane
       pet_info.name = chosenPet.name;
       $('.pet-image').attr('src', chosenPet.file);
 
-      // Transition to game screen
+      // Custom styled hatch banner — console.log with %c
+      console.log(
+        '%c🥚 Hatched! ' + chosenPet.name + ' joined your team!',
+        'background:#1a1f2e; color:#ff4da6; font-size:13px;' +
+        'font-weight:bold; padding:4px 12px; border-radius:20px;' +
+        'border:1px solid #ff4da6;'
+      );
+
       $('#egg-screen').fadeOut(400, function() {
         $('#game-screen').fadeIn(500);
         checkAndUpdatePetInfoInHtml();
@@ -61,13 +54,18 @@ function hatchEgg($egg) {
   }, 1000);
 }
 
-// Call buildEggScreen on load instead of going straight to game
+/*
+ * BUG FIX: This ready handler used to also bind the four action buttons,
+ * causing every click to fire its handler twice (jQuery appends listeners).
+ * Bindings are now defined only in script.js. To reproduce the bug, uncomment
+ * the four lines below — clicks will fire double and the console will show
+ * two "Pet Update" groups per click.
+ */
 $(function() {
-  buildEggScreen(); // show egg screen first
+  buildEggScreen();
 
-  // Button bindings (unchanged)
-  $('.treat-button').click(clickedTreatButton);
-  $('.play-button').click(clickedPlayButton);
-  $('.exercise-button').click(clickedExerciseButton);
-  $('.rest-button').click(clickedRestButton);
+  // $('.treat-button').click(clickedTreatButton);     // removed (duplicate)
+  // $('.play-button').click(clickedPlayButton);       // removed (duplicate)
+  // $('.exercise-button').click(clickedExerciseButton); // removed (duplicate)
+  // $('.rest-button').click(clickedRestButton);       // removed (duplicate)
 });
