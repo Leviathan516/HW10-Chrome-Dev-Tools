@@ -258,3 +258,52 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+
+/*  DevTools Panel  */
+#devtools-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--panel);
+  border: 1px solid var(--accent2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 999;
+  box-shadow: 0 0 16px rgba(255, 77, 166, 0.3);
+  min-width: 190px;
+}
+
+#devtools-panel-title {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  color: var(--accent2);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+#devtools-panel button {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: #222840;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+#devtools-panel button:hover {
+  background: #2c3560;
+  box-shadow: 0 0 8px rgba(255, 77, 166, 0.3);
+}
+
+#btn-404        { border-color: var(--red)    !important; color: var(--red)    !important; }
+#btn-typeerror  { border-color: var(--yellow) !important; color: var(--yellow) !important; }
+#btn-violation  { border-color: var(--accent) !important; color: var(--accent) !important; }
